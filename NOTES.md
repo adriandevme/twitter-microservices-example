@@ -7,6 +7,12 @@ https://github.com/tulios/
 
 https://dev.to/talr98/singleton-design-pattern-use-case-with-node-js-typescript-express-js-5ebb
 
+## TODO
+
+- Modelos
+- Test basicos
+-
+
 \*\* TODO v2
 -- webapp-server
 -- api-server

@@ -1,3 +1,4 @@
+import Twit from "../model/Twit";
 import { ETwitterStreamEvent, TweetStream, TwitterApi } from "twitter-api-v2";
 
 class Twitter {
@@ -10,7 +11,7 @@ class Twitter {
     this.client = new TwitterApi(this.APIKey);
   }
 
-  public async startStream(onTwit: (data: any) => any) {
+  public async startStream(onTwit: (twit: Twit) => any) {
     let self = this;
     if (!self.stream) {
       try {
@@ -37,7 +38,18 @@ class Twitter {
           ETwitterStreamEvent.Data,
           (eventData) => {
             console.log("Twitter has sent something:", eventData);
-            onTwit(eventData.data); //@WARNING unsafe access to data property
+            //Cast & notify
+            try {
+              const rawTwit = eventData.data;
+              const twit: Twit = new Twit(
+                rawTwit.id,
+                rawTwit.text,
+                rawTwit.edit_history_tweet_ids
+              );
+              onTwit(twit);
+            } catch (error) {
+              console.error("Error processing Twit from stream", error);
+            }
           }
         );
 

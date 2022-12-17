@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import Twitter from "./lib/twitter";
 import Kafka from "./lib/kafka";
 import { Server } from "http";
+import Twit from "./model/Twit";
 
 //Load dotenv
 dotenv.config();
@@ -23,10 +24,8 @@ const closeServer = async function (code: any) {
 };
 
 const startServer = async function () {
-  const onTwit = async function (twitData: any) {
-    const rawTwit = twitData;
-    //@TODO cast twit
-    const twitBuffer = Buffer.from(JSON.stringify(rawTwit));
+  const onTwit = async function (twit: Twit) {
+    const twitBuffer = twit.toBuffer();
     //Send twit to kafka
     const kafkaTopicName = process.env.KAFKA_TOPIC_NAME;
     await Kafka.getInstance().sendMessage(kafkaTopicName, twitBuffer);

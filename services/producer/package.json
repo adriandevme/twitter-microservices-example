@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts --no-coverage \"test/**/*.test.ts\"",
     "start": "npm run build:ts && node dist/app.js",
