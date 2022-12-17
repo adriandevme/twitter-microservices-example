@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 import Kafka from "./lib/kafka";
 import Mongo from "./lib/mongo";
+import Twit from "./model/Twit";
 
 //Load dotenv
 dotenv.config();
@@ -18,7 +19,7 @@ app.listen(port, async () => {
   try {
     const onMessage = async function (data: any) {
       console.log("Kafka message received from app.ts");
-      var twit = JSON.parse(data.toString()); //@WARNING cast needed
+      var twit: Twit = Twit.fromBuffer(data);
       console.log(twit);
       // Insert Twit into Twits Collection
       await Mongo.getInstance().insertItem(twit, "Twits");
