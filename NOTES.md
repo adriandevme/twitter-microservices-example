@@ -9,9 +9,9 @@ https://dev.to/talr98/singleton-design-pattern-use-case-with-node-js-typescript-
 
 ## TODO
 
-- Modelos
 - Test basicos
--
+- Dockerize
+- Readme
 
 \*\* TODO v2
 -- webapp-server
