@@ -27,7 +27,9 @@ class Kafka {
       try {
         self.kafkaClient = new KafkaClient(self.kafkaClientOptions);
         self.kafkaProducer = new HighLevelProducer(self.kafkaClient);
-        console.log("Kafka client instantiated correctly");
+        console.log(
+          `Kafka client instantiated correctly, listening at ${self.kafkaClientOptions.kafkaHost}`
+        );
         // Event subscribe
         self.kafkaClient.on("error", (error) =>
           console.error("Kafka client error:", error)
@@ -50,7 +52,9 @@ class Kafka {
         self.kafkaClient.on("reconnect", () =>
           console.log("Kafka client re-connected")
         );
-        self.kafkaProducer.on("ready", () => console.log("Kafka producer ready"));
+        self.kafkaProducer.on("ready", () =>
+          console.log("Kafka producer ready")
+        );
         self.kafkaProducer.on("error", (error) =>
           console.error("Kafka producer error: ", error)
         );
@@ -76,8 +80,8 @@ class Kafka {
       self.kafkaProducer.send([payload], (error, data) => {
         if (error) reject(error);
         else {
-            console.log('Data sent correctly to kafka', data);
-            resolve(data);
+          console.log("Data sent correctly to kafka", data);
+          resolve(data);
         }
       });
     });
