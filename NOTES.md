@@ -5,6 +5,8 @@ https://github.com/conduktor/kafka-stack-docker-compose
 https://github.com/SOHU-Co/kafka-node
 https://github.com/tulios/
 
+https://github.com/bschlenk/node-typescript-jest-boilerplate
+
 https://dev.to/talr98/singleton-design-pattern-use-case-with-node-js-typescript-express-js-5ebb
 
 ## TODO

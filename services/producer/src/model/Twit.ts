@@ -1,25 +1,24 @@
 import { text } from "stream/consumers";
 
 class Twit {
-  private id: number;
-  private text: string;
-  private edit_history_tweet_ids: Array<number>;
+  readonly id: number;
+  readonly text: string;
+  readonly edit_history_tweet_ids: Array<number>;
 
   public constructor(
     id: number,
     text: string,
     edit_history_tweet_ids: Array<number>
   ) {
-    let self = this;
-    self.id = id;
-    self.text = text;
-    self.edit_history_tweet_ids = edit_history_tweet_ids;
+    this.id = id as number;
+    this.text = text as string;
+    this.edit_history_tweet_ids = edit_history_tweet_ids as Array<number>;
   }
 
   static fromBuffer(data: Buffer) {
-    const rawTwit: any = JSON.parse(data.toString());
     let twit: Twit;
     try {
+      const rawTwit: any = JSON.parse(data.toString());
       twit = new Twit(rawTwit.id, rawTwit.text, rawTwit.edit_history_tweet_ids);
     } catch (e) {
       console.log("Error casting Twit from buffer", e);
