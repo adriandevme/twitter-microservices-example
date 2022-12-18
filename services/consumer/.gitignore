@@ -65,4 +65,4 @@ test/types/index.js
 dist
 
 # env files
-.env
+*.env

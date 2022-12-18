@@ -18,7 +18,7 @@ class Kafka {
     let self = this;
     self.kafkaClientOptions = {
       kafkaHost: process.env.KAFKA_HOST_URL,
-      clientId: "producer-client",
+      clientId: "consumer-client",
       connectRetryOptions: {
         retries: 2,
         minTimeout: 100, //@WARNING
@@ -74,10 +74,10 @@ class Kafka {
           onMessage(message.value); //@WARNING unsafe value
         });
         self.kafkaConsumer.on("error", (error) =>
-          console.error("Kafka producer error: ", error)
+          console.error("Kafka consumer error: ", error)
         );
       } catch (e) {
-        console.error("Error starting Kafka client or producer", e);
+        console.error("Error starting Kafka client or consumer", e);
       }
     } else {
       console.error("Error starting KafkaClient, client already created");

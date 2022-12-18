@@ -40,8 +40,8 @@ services:
   mongo:
     image: mongo
     restart: always
-    hostname: mongodb
-    container_name: mongodb
+    hostname: mongo
+    container_name: mongo
     ports:
       - 27017:27017
     environment:
