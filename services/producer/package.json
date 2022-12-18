@@ -10,7 +10,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage=false",
     "start": "npm run build:ts && node dist/app.js",
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
