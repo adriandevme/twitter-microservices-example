@@ -67,7 +67,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
 
   producer:
-    image: twitter-microservices-example-consumer:latest
+    image: twitter-microservices-example-producer:latest
     restart: always
     hostname: producer
     container_name: producer

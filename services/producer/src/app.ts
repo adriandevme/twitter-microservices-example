@@ -37,7 +37,7 @@ const startServer = async function () {
 };
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+  res.send("Welcome to the Twitter Microservices Example - Producer Server");
 });
 
 server = app.listen(port, async () => {
@@ -46,7 +46,9 @@ server = app.listen(port, async () => {
   } catch (e) {
     console.error("Error initing Twitter stream", e);
   }
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(
+    `Twitter Microservices Example - Producer Server is running at https://localhost:${port}`
+  );
 });
 
 process.on("SIGINT", closeServer);

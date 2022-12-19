@@ -12,7 +12,7 @@ const app: Express = express();
 const port = process.env.HTTP_SERVER_PORT;
 
 app.get("/", (req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
+  res.send("Welcome to the Twitter Microservices Example - Consumer Server");
 });
 
 app.listen(port, async () => {
@@ -31,5 +31,7 @@ app.listen(port, async () => {
   } catch (e) {
     console.error("Error initing server", e);
   }
-  console.log(`⚡️[server]: Server is running at https://localhost:${port}`);
+  console.log(
+    `Twitter Microservices Example - Consumer Server is running at https://localhost:${port}`
+  );
 });

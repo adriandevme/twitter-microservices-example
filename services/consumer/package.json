@@ -1,6 +1,6 @@
 {
   "name": "twitter-microservices-nodejs-consumer",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Consumer Example",
   "main": "app.ts",
   "directories": {
