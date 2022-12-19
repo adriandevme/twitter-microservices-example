@@ -39,9 +39,10 @@ services:
 
   kafka-init:
     image: confluentinc/cp-kafka:7.3.0
+    container_name: kafka-init
     depends_on:
       - kafka
-    entrypoint: [ '/bin/sh', '-c' ]
+    entrypoint: ["/bin/sh", "-c"]
     command: |
       "
       # blocks until kafka is reachable
@@ -66,7 +67,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_PASSWORD}
 
   producer:
-    image: twittermicroservicesexampleproducer:latest
+    image: twitter-microservices-example-consumer:latest
     restart: always
     hostname: producer
     container_name: producer
@@ -79,10 +80,10 @@ services:
       KAFKA_TOPIC_NAME: ${KAFKA_TOPIC_NAME}
     depends_on:
       kafka-init:
-          condition: service_completed_successfully
+        condition: service_completed_successfully
 
   consumer:
-    image: twittermicroservicesexampleconsumer:latest
+    image: twitter-microservices-example-consumer:latest
     restart: always
     hostname: consumer
     container_name: consumer
