@@ -5,19 +5,22 @@ https://github.com/conduktor/kafka-stack-docker-compose
 https://github.com/SOHU-Co/kafka-node
 https://github.com/tulios/
 
+https://github.com/bschlenk/node-typescript-jest-boilerplate
+
 https://dev.to/talr98/singleton-design-pattern-use-case-with-node-js-typescript-express-js-5ebb
+
+## TODO
+
+- Test basicos
+- Dockerize
+- Readme
 
 \*\* TODO v2
 -- webapp-server
 -- api-server
 
-docker-compose -f zk-single-kafka-single.yml up
+## Docker commands
 
-    "scripts": {
-        "test": "npm run build:ts && tsc -p test/tsconfig.json && tap --ts --no-coverage \"test/**/*.test.ts\"",
-        "start": "npm run build:ts && node dist/app.js",
-        "build:ts": "tsc",
-        "watch:ts": "tsc -w",
-        "dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-        "dev:start": "nodemon --inspect dist/app.js"
-    },
+docker-compose -f zk-single-kafka-single.yml up
+docker run --rm --network twitter-microservices-example_default --env-file=./services/producer/.dockerfile.env -p 3001:3001/tcp twittermicroservicesexampleproducer:latest
+docker run --rm --network twitter-microservices-example_default --env-file=./services/consumer/.dockerfile.env -p 3001:3001/tcp twittermicroservicesexampleconsumer:latest
